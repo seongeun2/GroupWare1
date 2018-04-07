@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "approval.mybatis">
+
+	<!-- 문서작성시 번호체크 -->
+	<select id="apNextNumber" resultType="int">
+		select docnoser.nextval from dual
+	</select>
+	
+	<!-- 문서작성 -->
+	<insert id="apInsert" parameterType="approval">
+		insert into board  (num,writer,email,subject,passwd,reg_date,
+		ref,re_step,re_level,content,ip,boardid, filename, filesize) 
+			values(#{num},#{writer},#{email},#{subject},#{passwd},sysdate,#{ref},
+			#{re_step},#{re_level},#{content},#{ip},#{boardid},#{filename},#{filesize})
+	</insert>
+	
+	<!-- 결재선 저장 -->
+	<insert id="apInsert_path" parameterType="approval">
+		insert into board  (num,writer,email,subject,passwd,reg_date,
+		ref,re_step,re_level,content,ip,boardid, filename, filesize) 
+			values(#{num},#{writer},#{email},#{subject},#{passwd},sysdate,#{ref},
+			#{re_step},#{re_level},#{content},#{ip},#{boardid},#{filename},#{filesize})
+	</insert>
+
+	
+	
+	<!-- 결재현황 리스트 -->
+	<select id="allList" resultType="Approval" parameterType="hashmap">
+		select * from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, 
+			app.indt, decode(app.type,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') type, 
+			decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.userid = #{userid}) a)
+			<if test = "startRow != null and endRow != null">
+			 where rnum between #{startRow} and #{endRow}
+			</if>
+	</select>
+	<!-- 결재현황 카운트 -->
+	<select id="allListCount" resultType="int" parameterType="hashmap">
+		select count(*)
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.userid = #{userid}
+	</select>
+	
+	<!-- 진행문서 리스트 -->
+	<select id="apIng" resultType="Approval" parameterType="hashmap">
+		select * from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, app.indt,  
+		decode(app.type,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') type, 
+		decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st01'
+			and path.userid = #{userid}) a)
+			<if test = "startRow != null and endRow != null">
+			 where rnum between #{startRow} and #{endRow}
+			</if>
+	</select>
+	<!-- 진행문서 카운트 -->
+	<select id="apIngCount" resultType="int" parameterType="hashmap">
+		select count(*)
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st01'
+			and path.userid = #{userid}
+	</select>
+	
+	
+	<!-- 결재대기 리스트 -->
+	<select id="apWaiting" resultType="Approval" parameterType="hashmap">
+		select * from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, app.indt, 
+		decode(app.type,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') type, 
+		decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st02'
+			and path.userid = #{userid}) a)
+			<if test = "startRow != null and endRow != null">
+			 where rnum between #{startRow} and #{endRow}
+			</if>
+	</select>
+	<!-- 결재대기st02 카운트 -->
+	<select id="apWaitingCount" resultType="int" parameterType="hashmap">
+		select count(*)
+			from approval app, approval_path path
+			where app.docno = path.docno
+			and path.status ='st02'
+			and path.userid = #{userid}
+	</select>
+	
+	
+	<!-- 상세페이지 -->
+	<select id="viewPage" resultType="Approval" parameterType="hashmap">
+		select 
+		    docno,name,inid,indt,deptname,teamname,type,startdt,enddt,title,content
+		    ,(select username from approval_path where gubun = 'ap01' and docno = #{docno}) as user1
+		    ,(select username from approval_path where gubun = 'ap02' and docno = #{docno}) as user2
+		    ,(select username from approval_path where gubun = 'ap03' and docno = #{docno}) as user3
+		from approval 
+		where docno = #{docno}
+	</select>
+	
+	<select id="apInfo" resultType="Approval" parameterType="hashmap">
+		select tpdep.dname AS deptName , tpteam.tname AS teamName, tpuser.name AS name
+			from tpuser, tpteam, tpdep 
+			where tpuser.tnum = tpteam.tnum 
+			and tpteam.dnum = tpdep.dnum 
+			and tpuser.id = #{userid} 
+	</select>	
+	
+</mapper>
