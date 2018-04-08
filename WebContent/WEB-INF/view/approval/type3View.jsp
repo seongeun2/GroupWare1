@@ -27,8 +27,11 @@
 <div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
 <form action="apSave" target="_blank">
 <input type="hidden" id="docNo" name="docNo" value="${vo.docNo}">
-   <div class="w3-row w3-padding">
-      <div class="w3-col" style="width: 55%; font-size: 100px; padding-left: 170px;">기 안 서</div>
+   <div style="margin-left:300px; margin-right:300px;">
+      <div class="w3-row w3-padding w3-blue-grey">
+         <div class="w3-padding-16"></div>
+         
+      <div class="w3-col" style="width: 55%;"><p class="w3-xxxlarge">지출결의서</p></div>
       <!-- 1번 결재 -->
       <div class="w3-col" style="width: 15%; height: 120px">
          <div class="w3-container w3-center w3-border">
@@ -110,16 +113,18 @@
    </div>
    
    <div class="w3-padding-16"></div>
-    
+   </div>
+   </div>
+</form>
+
+<div class="w3-padding-16"></div>
    <div class="w3-center">
       <button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
-      <i class="fa fa-paper-plane w3-margin-right"></i>작성완료</button>
-        <button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
-      <i class="fa fa-paper-plane w3-margin-right"></i>다시작성</button>
+      <i class="fa fa-paper-plane w3-margin-right"></i>결재</button>
+        <button onclick="docReturn('${vo.docNo}');" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
+      <i class="fa fa-paper-plane w3-margin-right"></i>반려</button>
    </div>
-   
-   </div>
-</form></div>
+</div>
   
 <div class="w3-padding-16"></div>
 </html>

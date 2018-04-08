@@ -33,7 +33,7 @@
       <div class="w3-row w3-padding w3-blue-grey">
          <div class="w3-padding-16"></div>
          
-         <div id="doc" class="w3-col" style="width: 55%;"><p class="w3-xxxlarge">기 안 서</p></div>
+         <div id="doc" class="w3-col" style="width: 55%;"><p class="w3-xxxlarge">휴가신청서</p></div>
    
       <!-- 1번 결재 -->
       <div class="w3-col" style="width: 15%; height: 120px">
