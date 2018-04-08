@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/orgTree-view.css">
 <body>
-
+ 
  <div class="w3-container" style="margin: 40px 100px;">
 <h2 style="text-align: center;">รั ม๗ฟ๘</h2>
 <table class="w3-table-all w3-hoverable" style="text-align: center;">
