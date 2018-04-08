@@ -5,7 +5,6 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
-<script src="${pageContext.servletContext.contextPath}/resources/js/types.js"></script>
 
   <!-- Contact Section -->
 <div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">

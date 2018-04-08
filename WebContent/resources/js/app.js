@@ -1,27 +1,27 @@
-//2¹øÂ° ÁöÁ¤ °áÀç ÆË¾÷Ã¢
+//2ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½Ã¢
 function apPop(){
 	var w = 800;
 	var h = 500;
-	window.open("/GroupWare/orgChart/insa?app=1", "¼ö½ÅÁöÁ¤",'width='+w+',height='+h+',scrollbars=no,status=1')
+	window.open("/GroupWare/orgChart/insa?app=1", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",'width='+w+',height='+h+',scrollbars=no,status=1')
 
 }
 
-//3¹øÂ° ÁöÁ¤ °áÀç ÆË¾÷Ã¢
+//3ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½Ã¢
 function apPop2(){
 	var w = 800;
 	var h = 500;
-	window.open("/GroupWare/orgChart/insa?app=2", "¼ö½ÅÁöÁ¤",'width='+w+',height='+h+',scrollbars=no,status=1')
+	window.open("/GroupWare/orgChart/insa?app=2", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½",'width='+w+',height='+h+',scrollbars=no,status=1')
 
 }
 
-// Ã¼Å©¹Ú½º ¼±ÅÃ ½Ã ºÎ¸ğÃ¢À¸·Î °ª Àü´Ş
+// Ã¼Å©ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î¸ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 function check(name2,id2,app){
-	//2¹øÂ° °áÀçÀÚ
+	//2ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(app==1){
 		window.opener.document.getElementById("name22").innerHTML = name2;	
 		opener.document.getElementById("id2").value = id2;
 		opener.document.getElementById("name2").value = name2;
-	//3¹øÂ° °áÀçÀÚ
+	//3ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}else if(app=2){
 		window.opener.document.getElementById("name33").innerHTML = name2;	
 		opener.document.getElementById("id3").value = id2;
@@ -31,8 +31,23 @@ function check(name2,id2,app){
 }
 
 
-//¹İ·Á
+//ï¿½İ·ï¿½
 function docReturn(num){
 	location.href ="docReturn?docNo="+num;
 
+}
+
+/* 3ë²ˆì§¸ ê²°ì¬ìë¥¼ í™•ì¸í•©ë‹ˆë‹¤. */
+function IsThird() {
+   console.log("THIRD");
+   var third = document.getElementById("third_approval");
+   var doc = document.getElementById("doc");
+   
+   var test="${!empty vo.user3}";
+   
+   if(!test) {
+      /* í•˜ë“œ ì½”ë”© í–ˆìŠµë‹ˆë‹¤. */
+      doc.style.width = "70%"; 
+      third.parentNode.removeChild(third);
+   }
 }
