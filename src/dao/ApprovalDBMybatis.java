@@ -162,5 +162,48 @@ public class ApprovalDBMybatis extends MybatisConnector{
 		return approval;
 	}
 	
+	//문서처리
+	public void apSave(ApprovalDataBean approval) {
+		sqlSession = sqlSession();
+		//2번째 결재권한자가 문서를 처리했는지 확인.
+		String gubun = approval.getStamp2();
+		
+		System.out.println("gubun::===="+gubun);
+		
+		int x = 0;
+				
+		//경로테이블에 카운터가 몇개인지 확인에 따라 update변경
+		x = sqlSession.selectOne(namespace+".apCount", approval) ;
+		
+		System.out.println("경로 결재 몇개인지 확인 :::::::::"+x);
+		
+		if(x == 2) {
+			sqlSession.update(namespace+".apSave",approval);
+		}
+		
+		if(x == 3 && gubun == null){
+			sqlSession.update(namespace+".apSaveSt1",approval);
+			sqlSession.update(namespace+".apSaveSt2",approval);
+		}else {
+			sqlSession.update(namespace+".apSave",approval);
+		}
+		
+		sqlSession.commit();
+		sqlSession.close();
+	}
 	
+	//결재반려
+	public void docReturn(int num, String userid) {
+		sqlSession = sqlSession();
+		
+		Map map = new HashMap();
+		
+		map.put("num", num);
+		map.put("userid", userid);
+		
+		sqlSession.update(namespace+".docReturn",map);
+		
+		sqlSession.commit();
+		sqlSession.close();
+	}
 }

@@ -123,7 +123,7 @@
 	<select id="viewPage" resultType="Approval" parameterType="hashmap">
 		select 
 		    docno,name,inid,indt,deptname,teamname,typegubun,startdt,enddt,title,content
-		    ,(select username from approval_path where gubun = 'ap01' and status in ('st01','st03') and docno = #{docno}) as stamp1
+		    ,(select username from approval_path where gubun = 'ap01' and status in ('st01','st03','st04') and docno = #{docno}) as stamp1
 		    ,(select username from approval_path where gubun = 'ap02' and status in ('st01','st03') and docno = #{docno}) as stamp2
 		    ,(select username from approval_path where gubun = 'ap03' and status in ('st01','st03') and docno = #{docno}) as stamp3
             ,(select username from approval_path where gubun = 'ap01' and docno = #{docno}) as user1
@@ -140,5 +140,43 @@
 			and tpteam.dnum = tpdep.dnum 
 			and tpuser.id = #{userid} 
 	</select>	
+	
+	<!-- 결재현황 카운트 -->
+	<select id="apCount" resultType="int" parameterType="approval">
+		select count(*)
+			from approval_path
+		where docNo = #{docNo}
+	</select>
+	
+	<!-- 최종결재인경우 -->
+	<update id="apSave" parameterType="approval">
+	   update approval_path
+		  set status = 'st03'
+		where docNo = #{docNo}	
+	</update>
+	
+	<!-- 결재선이 3개일경우 -->
+	<update id="apSaveSt1" parameterType="approval">
+	   update approval_path
+		  set status = 'st01'
+		where docNo = #{docNo}	
+		  and gubun = 'ap02'
+	</update>
+	
+	<!-- 결재선이 3개일경우 -->
+	<update id="apSaveSt2" parameterType="approval">
+	   update approval_path
+		  set status = 'st02'
+		where docNo = #{docNo}	
+		  and gubun = 'ap03'
+	</update>
+	
+	<!-- 반려 -->
+	<update id="docReturn" parameterType="hashmap">
+	   update approval_path
+		  set status = 'st04'
+		where docNo = #{num}
+		and userid = #{userid}	
+	</update>
 	
 </mapper>

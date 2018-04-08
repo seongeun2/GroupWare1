@@ -32,6 +32,7 @@ function check(name2,id2,app){
 
 
 //반려
-function docReturn(){
-	 //다2ㄱㅈㄷㄱㅈㄷ거ㅏㅣ;;
+function docReturn(num){
+	location.href ="docReturn?docNo="+num;
+
 }

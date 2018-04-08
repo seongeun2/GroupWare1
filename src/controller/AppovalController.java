@@ -78,7 +78,7 @@ public class AppovalController {
 		if(approval.equals("1")) {	//작성 성공시 리스트로 이동
 			return "/approval/list";
 		}
-		return "/approval/type1";
+		return "approval/allList";
 		
 	}
 
@@ -230,26 +230,29 @@ public class AppovalController {
 	
 	
 	
-	//상세보기
-		@RequestMapping("/apSave")
-		public String apSave(Model model, int docNum) {
-			ApprovalDataBean vo = dbPro.viewPage(docNum);
+	//결재
+	@RequestMapping("/apSave")
+	public String apSave(Model model, ApprovalDataBean approval) {
 			
-			model.addAttribute("vo", vo);
-			model.addAttribute("pageNum", pageNum);
+		dbPro.apSave(approval);
 			
-			String typegubun = vo.getTypegubun();
+		return "approval/allList";	
+	}
+		
+	//반려
+	@RequestMapping("/docReturn")
+	public String docReturn(String docNo,HttpSession session ) {
+		
+		String userid = (String)session.getAttribute("id");
+		
+		System.out.println("들어옵니까"+ docNo);
+		int no = Integer.parseInt(docNo);
 			
-			if(typegubun.equals("doc01")){
-				return "approval/type1View";	//기안서 페이지
-				
-			}else if(typegubun.equals("doc02")) {
-				model.addAttribute("vo", vo);
-				
-				return "approval/type2View";	//휴가신청서 페이지		
-			}
-				return "approval/type3View";	//지출품의서 페이지
-		}
+		dbPro.docReturn(no,userid);
+			
+		return "approval/allList";	
+	}
+		
 	
 	
 }

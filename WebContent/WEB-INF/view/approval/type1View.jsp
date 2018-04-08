@@ -25,6 +25,8 @@
 <hr class="w3-opacity">
 <div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
 <form action="apSave" target="_blank">
+<input type="hidden" id="docNo" name="docNo" value="${vo.docNo}">
+<input type="hidden" id="stamp2" name="stamp2" value="${vo.stamp2}">
 	<div class="w3-row w3-padding">
 		<div class="w3-col" style="width: 55%; font-size: 100px; padding-left: 170px;">기 안 서</div>
 		<!-- 1번 결재 -->
@@ -95,14 +97,14 @@
 		<label>작성일자</label>
         <input class="w3-input w3-border" type="text" value="${vo.inDt}" readonly>
 	</div>
-      
+      </form>
 	<div class="w3-padding">
 		<button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
 		<i class="fa fa-paper-plane w3-margin-right"></i>결재</button>
-     	<button onclick="docReturn();" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
+     	<button onclick="docReturn('${vo.docNo}');" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
 		<i class="fa fa-paper-plane w3-margin-right"></i>반려</button>
 	</div>
-</form></div>
+</div>
   
 <div class="w3-padding-16"></div>
 </html>
