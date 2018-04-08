@@ -58,7 +58,7 @@
          <!-- 3¹ø °áÀç -->
          <div id="third_approval" class="w3-col" style="width: 15%; height: 120px">
             <div class="w3-container w3-center w3-border">
-                 <p>${vo.user3}</p>
+                 <p id="result">${vo.user3}</p>
             </div>
             <div class="w3-container w3-center w3-border">
                  <%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
@@ -66,7 +66,10 @@
             </div>
          </div>
          
-         <script>IsThird()</script>
+         <script type="text/javascript">
+         var result= document.getElementById("result").innerHTML;
+         IsThird(result)
+         </script>
          
          <div class="w3-padding-16"></div>
    </div>

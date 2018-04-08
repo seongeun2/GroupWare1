@@ -216,15 +216,17 @@ public class AppovalController {
 		model.addAttribute("pageNum", pageNum);
 		
 		String typegubun = vo.getTypegubun();
+		System.out.println(typegubun);
 		
 		if(typegubun.equals("doc01")){
+			System.out.println("1111111111111111");
 			return "approval/type1View";	//기안서 페이지
 			
 		}else if(typegubun.equals("doc02")) {
-			model.addAttribute("vo", vo);
-			
+			System.out.println("222222222222222");
 			return "approval/type2View";	//휴가신청서 페이지		
 		}
+		System.out.println("333333333333");
 			return "approval/type3View";	//지출품의서 페이지
 	}
 	
