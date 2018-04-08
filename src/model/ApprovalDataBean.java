@@ -15,7 +15,7 @@ public class ApprovalDataBean {
 	private String content;		//내용
 	private String holiday;     //휴가구분
 	
-	
+	 
 	//approval_path 테이블
 	/*private int docNo;*/		//approval과 동일한 문서번호
 	private String userid;		//로그인한 사용자id
