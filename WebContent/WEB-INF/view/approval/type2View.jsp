@@ -100,14 +100,27 @@
       <label>제목</label>
         <input class="w3-input w3-border" type="text" value="${vo.title}" readonly>
    </div>
-
+   
+   <div class="w3-padding-16"></div>
+   <div class="w3-row-padding">
+      <div class="w3-half">
+         <label>휴가시작</label>
+         <input class="w3-input w3-border" id="startDt" type="text" value="${vo.startDt}" readonly>
+      </div>
+      <div class="w3-half">
+         <label>휴가종료</label>
+         <input class="w3-input w3-border" id="ednDt" type="text" value="${vo.endDt}" readonly>
+      </div>
+   </div>
+   
    <div class="w3-padding-16"></div>
    <div class="w3-padding">
-      <label>기안내용</label>
-        <textarea class="w3-input w3-border" type="text" name="Message" 
-                          required style="height:300px; resize: none;" readonly>${vo.content}</textarea>
+      <label>사유</label>
+      <textarea class="w3-input w3-border" type="text" name="Message" 
+              required style="height:200px; resize: none;" readonly>${vo.content}</textarea>
    </div>
       
+   
    <div class="w3-padding-16"></div>
    <div class="w3-padding">
       <label>작성일자</label>
