@@ -61,18 +61,18 @@
 <div class="w3-center" style="margin-top: 20px; text-align: center;">
 <c:if test="${count>0}">
 	<c:if test="${startPage > bottomLine }">
-		<a href="list?pageNum=${startPage - bottomLine}">[이전]</a> 
+		<a href="apIng?pageNum=${startPage - bottomLine}">[이전]</a> 
 	</c:if>
    
 	<c:forEach var="i" begin="${startPage}" end="${endPage}">   
-		<a href="list?pageNum=${i}">
+		<a href="apIng?pageNum=${i}">
 	<c:if test="${i !=  currentPage}">[${i}]</c:if>
 	<c:if test="${i ==  currentPage}">
 		<font color='red'>[${i}]</font></c:if></a>
 	</c:forEach>
    
 	<c:if test="${endPage < pageCount}">
-		<a href="list?pageNum=${startPage+bottomLine}">[다음]</a>
+		<a href="apIng?pageNum=${startPage+bottomLine}">[다음]</a>
 	</c:if>   
 </c:if>
 </div><br>

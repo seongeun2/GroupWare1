@@ -27,6 +27,7 @@
 <div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
 <form action="apSave" target="_blank">
 <input type="hidden" id="docNo" name="docNo" value="${vo.docNo}">
+<input type="hidden" id="stamp2" name="stamp2" value="${vo.stamp2}">
    <div style="margin-left:300px; margin-right:300px;">
       <div class="w3-row w3-padding w3-blue-grey">
          <div class="w3-padding-16"></div>
@@ -115,16 +116,20 @@
    <div class="w3-padding-16"></div>
    </div>
    </div>
-</form>
 
+<c:if test="${vo.status eq 'st02'}">
 <div class="w3-padding-16"></div>
    <div class="w3-center">
       <button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
       <i class="fa fa-paper-plane w3-margin-right"></i>결재</button>
+   </div>
+   </form>
+   <div class="w3-center">
         <button onclick="docReturn('${vo.docNo}');" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
       <i class="fa fa-paper-plane w3-margin-right"></i>반려</button>
    </div>
 </div>
+</c:if>
   
 <div class="w3-padding-16"></div>
 </html>

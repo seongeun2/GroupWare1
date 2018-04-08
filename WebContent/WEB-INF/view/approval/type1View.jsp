@@ -117,16 +117,20 @@
    <div class="w3-padding-16"></div>
    </div>
    </div>
-</form>
 
+<c:if test="${vo.status eq 'st02'}">
 <div class="w3-padding-16"></div>
    <div class="w3-center">
       <button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
       <i class="fa fa-paper-plane w3-margin-right"></i>결재</button>
+   </div>
+   </form>
+   <div class="w3-center">
         <button onclick="docReturn('${vo.docNo}');" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
       <i class="fa fa-paper-plane w3-margin-right"></i>반려</button>
    </div>
 </div>
+</c:if>
   
 <div class="w3-padding-16"></div>
 </html>

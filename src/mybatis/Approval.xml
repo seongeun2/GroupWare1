@@ -123,6 +123,7 @@
 	<select id="viewPage" resultType="Approval" parameterType="hashmap">
 		select 
 		    docno,name,inid,indt,deptname,teamname,typegubun,startdt,enddt,title,content,holiday
+		    ,(select status from approval_path where docno = #{docno} and userid = #{userid}) as status
 		    ,(select username from approval_path where gubun = 'ap01' and status in ('st01','st03','st04') and docno = #{docno}) as stamp1
 		    , (select username from approval_path where gubun = 'ap02' and status in ('st01','st03') and docno = #{docno}
             union all
@@ -181,7 +182,6 @@
 	   update approval_path
 		  set status = 'st04'
 		where docNo = #{num}
-		and userid = #{userid}	
 	</update>
 	
 </mapper>

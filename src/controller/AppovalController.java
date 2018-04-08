@@ -209,8 +209,10 @@ public class AppovalController {
 	
 	//상세보기
 	@RequestMapping("/apView")
-	public String apView(Model model, int docNum) {
-		ApprovalDataBean vo = dbPro.viewPage(docNum);
+	public String apView(Model model, int docNum, HttpSession session) {
+		String userid = (String)session.getAttribute("id");
+		
+		ApprovalDataBean vo = dbPro.viewPage(docNum,userid);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageNum", pageNum);

@@ -152,10 +152,11 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	}
 	
 	//상세페이지
-	public ApprovalDataBean viewPage(int docNum) {
+	public ApprovalDataBean viewPage(int docNum, String userid) {
 		sqlSession = sqlSession();
 		Map map = new HashMap();
 		map.put("docno", docNum);
+		map.put("userid", userid);
 		ApprovalDataBean approval = sqlSession.selectOne(namespace+".viewPage", map) ;
 		approval.getContent();
 		sqlSession.close();
@@ -181,7 +182,7 @@ public class ApprovalDBMybatis extends MybatisConnector{
 			sqlSession.update(namespace+".apSave",approval);
 		}
 		
-		if(x == 3 && gubun == null){
+		if(x == 3 && gubun == null || gubun == ""){
 			sqlSession.update(namespace+".apSaveSt1",approval);
 			sqlSession.update(namespace+".apSaveSt2",approval);
 		}else {
