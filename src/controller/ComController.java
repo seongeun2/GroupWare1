@@ -38,7 +38,7 @@ public class ComController {
 		public String list1(Model model, HttpSession session) throws Exception {
 			
 			String name = (String) session.getAttribute("name");
-			
+			String id = (String) session.getAttribute("id");
 			model.addAttribute("name", name);
 			//추가
 			
@@ -80,6 +80,15 @@ public class ComController {
 			model.addAttribute("bottomLine", bottomLine);
 			model.addAttribute("endPage", endPage);
 			model.addAttribute("number", number);
+		
+		
+	    //성희 추가 top.jspf에 왼쪽 버튼 클릭시 관리자용 메인으로 이동.
+		if(id.equals("admin")) {
+			return "common/admin";
+		}
+		
+		//성희 추가 끝
+		
 		//수정
 			
 			return "board/mainBoard";

@@ -16,6 +16,7 @@
       <url-pattern>/WEB-INF/view/common/*</url-pattern>
       <url-pattern>/WEB-INF/view/notice/*</url-pattern>
       <url-pattern>/WEB-INF/view/orgChart/*</url-pattern>
+      <url-pattern>/WEB-INF/view/member/*</url-pattern>
       <include-prelude>/WEB-INF/view/common/top.jspf</include-prelude>
     </jsp-property-group>
   </jsp-config>
