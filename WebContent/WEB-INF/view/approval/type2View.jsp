@@ -2,15 +2,12 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+ <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- <script>
-//반려 버튼
-function docReturn() {
-//반려 클릭시 update쿼리 , st04 (반려) 로 상태변경 및 결재현황 리스트(allList)로 이동.
-}
-</script>
   
   <!-- Contact Section -->
 <div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">
@@ -31,17 +28,18 @@ function docReturn() {
    <!-- 사이 줄 그어줍니다. -->
 <hr class="w3-opacity">
 <div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
-<form action="ap_update" target="_blank">
+<form action="apSave" target="_blank">
+<input type="hidden" id="docNo" name="docNo" value="${vo.docNo}">
 	<div class="w3-row w3-padding">
-		<div class="w3-col" style="width: 55%; font-size: 100px; padding-left: 170px;">휴가신청서</div>
+		<div class="w3-col" style="width: 55%; font-size: 100px; padding-left: 170px;">기 안 서</div>
 		<!-- 1번 결재 -->
 		<div class="w3-col" style="width: 15%; height: 120px">
 			<div class="w3-container w3-center w3-border">
 				<p>${vo.user1}</p>
 			</div>
 			<div class="w3-container w3-center w3-border">
-				<img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-           			style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+				<%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
+        		<p>${vo.stamp1}</p>
         	</div>
       	</div>
       	<!-- 2번 결재 -->
@@ -50,20 +48,22 @@ function docReturn() {
 				<p>${vo.user2}</p>
          	</div>
          	<div class="w3-container w3-center w3-border">
-           		<img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-           			style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+           		<%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
+        		<p>${vo.stamp2}</p>
         	</div>
       	</div>
       	<!-- 3번 결재 -->
+      	<c:if test="${!empty vo.user3}">
       	<div class="w3-col" style="width: 15%; height: 120px">
          	<div class="w3-container w3-center w3-border">
            		<p>${vo.user3}</p>
          	</div>
          	<div class="w3-container w3-center w3-border">
-           		<img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
-            		style="width: 100px; height: 100px" class="w3-circle" alt="Avatar">
+           		<%-- <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" style="width: 100px; height: 100px" class="w3-circle" alt="Avatar"> --%>
+         		<p>${vo.stamp3}</p>
          	</div>
       	</div>
+      	</c:if>
 	</div>
     
 	<div class="w3-padding-32"></div>
@@ -123,7 +123,7 @@ function docReturn() {
 	<div class="w3-padding">
 		<button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
 		<i class="fa fa-paper-plane w3-margin-right"></i>결재</button>
-     	<button onclick="docReturn();" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
+     	<button onclick="docReturn('${vo.docNo}');" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
 		<i class="fa fa-paper-plane w3-margin-right"></i>반려</button>
 	</div>
 </form></div>
