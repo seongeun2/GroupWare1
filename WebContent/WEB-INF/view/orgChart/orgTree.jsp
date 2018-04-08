@@ -12,13 +12,17 @@
     <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/orgTree.css">
 </head>
 <body>
-	  <!--Management Hierarchy-->
+
+<div class="w3-main" style="margin-left: 100px; margin-right: 100px;">
+   <div class="w3-padding">
+   
+     <!--Management Hierarchy-->
     <section class="management-hierarchy">
       
         <h1> 그리소프트 /조직도</h1>
                   
         <div style="text-align:right;">   
-       		<button class="w3-button w3-white w3-border w3-round-large" onclick="location.href='insa'">총 직원</button>
+             <button class="w3-button w3-white w3-border w3-round-large" onclick="location.href='insa'">총 직원</button>
         </div> 
               
         <div class="hv-container">
@@ -31,7 +35,7 @@
                         <div class="person">
                             <img src="${pageContext.servletContext.contextPath}/resources/images/3.png">
                             <p class="name">
-                                	대표 <b>/ CEO</b>
+                                   대표 <b>/ CEO</b>
                             </p>
                         </div>
                     </div>
@@ -46,7 +50,7 @@
                                     <div class="person">
                                         
                                         <p class="name">
-                                         	경영지원부서
+                                            경영지원부서
                                         </p>
                                     </div>
                                 </div>
@@ -57,7 +61,7 @@
                                         <div class="person">
                                               <img src="${pageContext.servletContext.contextPath}/resources/images/4.jpg">
                                             <p class="name">
-                                  		             인사팀 <br> <b>/ Personnel Team</b>
+                                                     인사팀 <br> <b>/ Personnel Team</b>
                                             </p>
                                         </div>
                                     </div>
@@ -67,7 +71,7 @@
                                         <div class="person">
                                              <img src="${pageContext.servletContext.contextPath}/resources/images/5.jpg">
                                             <p class="name">
-                                                	회계팀  <br><b>/ Accounting Team</b>
+                                                   회계팀  <br><b>/ Accounting Team</b>
                                             </p>
                                         </div>
                                     </div>
@@ -76,7 +80,7 @@
                                         <div class="person">
                                              <img src="${pageContext.servletContext.contextPath}/resources/images/6.png">
                                             <p class="name">
-                                                	고객관리팀 <br><b>/  Customer Management Team</b>
+                                                   고객관리팀 <br><b>/  Customer Management Team</b>
                                             </p>
                                         </div>
                                     </div>
@@ -94,7 +98,7 @@
                                 <div class="hv-item-parent">
                                     <div class="person">
                                         <p class="name">
-                                          	개발부서
+                                             개발부서
                                         </p>
                                     </div>
                                 </div>
@@ -105,7 +109,7 @@
                                         <div class="person">
                                          <img src="${pageContext.servletContext.contextPath}/resources/images/7.jpg">
                                             <p class="name">
-                                                	개발1팀 <br><b>/ Back-end</b>
+                                                   개발1팀 <br><b>/ Back-end</b>
                                             </p>
                                         </div>
                                     </div>
@@ -115,7 +119,7 @@
                                         <div class="person">
                                           <img src="${pageContext.servletContext.contextPath}/resources/images/11.jpg">
                                             <p class="name">
-                                                	개발2팀 <br><b>/ Back-end</b>
+                                                   개발2팀 <br><b>/ Back-end</b>
                                             </p>
                                         </div>
                                     </div>
@@ -132,7 +136,7 @@
                                 <div class="hv-item-parent">
                                     <div class="person">
                                         <p class="name">
-                                            	디자인부서
+                                               디자인부서
                                         </p>
                                     </div>
                                 </div>
@@ -143,7 +147,7 @@
                                         <div class="person">
                                             <img src="${pageContext.servletContext.contextPath}/resources/images/15.png">
                                             <p class="name">
-                                                	디자인1팀 <br><b>/ Front-end</b>
+                                                   디자인1팀 <br><b>/ Front-end</b>
                                             </p>
                                         </div>
                                     </div>
@@ -153,7 +157,7 @@
                                         <div class="person">
                                             <img src="${pageContext.servletContext.contextPath}/resources/images/13.png">
                                             <p class="name">
-                                                	디자인2팀 <br><b>/ Front-end</b>
+                                                   디자인2팀 <br><b>/ Front-end</b>
                                             </p>
                                         </div>
                                     </div>
@@ -172,5 +176,8 @@
         </div>
    
     </section>
+   </div>
+</div>
+    
 </body>
 </html>
