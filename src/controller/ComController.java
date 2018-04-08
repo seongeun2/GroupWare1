@@ -81,13 +81,14 @@ public class ComController {
 			model.addAttribute("endPage", endPage);
 			model.addAttribute("number", number);
 		
-		
+		/* 취소-----(4/8)
 	    //성희 추가 top.jspf에 왼쪽 버튼 클릭시 관리자용 메인으로 이동.
 		if(id.equals("admin")) {
 			return "common/admin";
 		}
 		
 		//성희 추가 끝
+		*/ 
 		
 		//수정
 			

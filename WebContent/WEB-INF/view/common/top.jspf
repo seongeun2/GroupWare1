@@ -28,6 +28,10 @@ function pop(){	//쪽지쓰기_조직도 팝업
       <a href="${pageContext.request.contextPath}/main" class="w3-bar-item w3-button w3-hover-blue">GroupWare</a>
       <div class="w3-right w3-hide-small">
          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">추가기능 1</a> -->
+         <c:if test="${id.equals('admin')}">
+         	<a href="${pageContext.request.contextPath}/member/adminpage" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">직원 관리</a>
+         </c:if>
+         
          <a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">내 정보</a>
          <a href="/GroupWare/logout" class="w3-bar-item w3-button w3-hide-small w3-hover-blue">로그아웃</a>
       </div>

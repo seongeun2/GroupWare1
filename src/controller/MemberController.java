@@ -33,12 +33,21 @@ public class MemberController{
 		session.setAttribute("id", id);
 		model.addAttribute("pwcheck",pwcheck);		
 		
+	/*	
 		if(id.equals("admin") && pwcheck==1) {
-			return "common/admin";  //jsp 페이지 만들어야함.
+			//return "common/admin";  //jsp 페이지 만들어야함.
+			return "/board/mainBoard";
 		}else
+		*/
 		return  "loginDb"; 
 	}
 	
+	//관리자 모드 - 직원관리 버튼 클릭시 이동
+		@RequestMapping("/adminpage")
+		public String adminpage() {
+			
+			return "member/adminpage";
+		}
 	
 	//관리자 모드 - 직원 등록
 	@RequestMapping("/regEmployee")
