@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
+
 import model.ApprovalDataBean;
 
 
@@ -21,8 +23,8 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	SqlSession sqlSession;
 	
 	
-	/*//결재문서 작성
-	public void apWrite(ApprovalDataBean approval,String name, String deptName, String type) {
+	//결재문서 작성
+	public int apWrite(ApprovalDataBean approval, String id2, String id3, String user2, String user3) {
 		sqlSession = sqlSession();
 		int cnt = 0;
 		int number = sqlSession.selectOne(namespace+".apNextNumber",approval);
@@ -33,18 +35,34 @@ public class ApprovalDBMybatis extends MybatisConnector{
 		}else {
 			number = 1;
 		}
-		approval.setDocNo(number);
-		approval.setName(name);
-		approval.setDeptName(deptName);
-		approval.setType(type);
 		
+		approval.setDocNo(number);
+		
+		
+		//approval 원 테이블 등록
 		sqlSession.insert(namespace+".apInsert",approval);
+		//경로 테이블 1번째 기안자 등록
 		sqlSession.insert(namespace+".apInsert_path",approval);
+		
+		if(!id2.equals("")) {
+			//2번째 결재자로 id와,이름을 변경 후 등록
+			approval.setUserid(id2);
+			approval.setUser2(user2);
+			sqlSession.insert(namespace+".apInsert_path2",approval);
+		}
+		if(!id3.equals("")) {
+			//3번째 결재자로 id와, 이름을 변경 후 등록
+			approval.setUserid(id3);
+			approval.setUser3(user3);
+			sqlSession.insert(namespace+".apInsert_path3",approval);
+		}
 		
 		sqlSession.commit();
 		sqlSession.close();
+		
+		return cnt;
 	}
-	*/
+	
 	
 	//문서작성시 멤버정보 불러오기
 	public ApprovalDataBean apInfo(String userid) {
@@ -143,8 +161,6 @@ public class ApprovalDBMybatis extends MybatisConnector{
 		sqlSession.close();
 		return approval;
 	}
-	
-	
 	
 	
 }

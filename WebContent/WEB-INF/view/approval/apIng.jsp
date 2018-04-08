@@ -49,7 +49,7 @@
 		      <td>${ap.teamName}</td><!-- 팀명 -->
 		      <td><a href="apView?docNum=${ap.docNo}&pageNum=${currentPage}">${ap.title}</a></td><!-- 제목 -->
 		      <td>${ap.inDt}</td><!-- 등록일시 -->
-		      <td>${ap.type}</td><!-- 문서양식 -->
+		      <td>${ap.typegubun}</td><!-- 문서양식 -->
 		      <td>${ap.status}</td><!-- 진행상태 -->
 		    </tr>
 		</c:forEach>

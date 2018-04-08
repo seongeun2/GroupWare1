@@ -8,11 +8,12 @@ public class ApprovalDataBean {
 	private String inDt;		//등록일자
 	private String deptName;	//부서이름
 	private String teamName;	//팀이름
-	private String type; 		//문서양식  doc01:기안,doc02:휴가,doc03:지출
+	private String typegubun; 		//문서양식  doc01:기안,doc02:휴가,doc03:지출
 	private String startDt;		//휴가양식 / 휴가시작일
 	private String endDt;		//휴가양식 / 휴가종료일
 	private String title;		//제목
 	private String content;		//내용
+	private String holiday;     //휴가구분
 	
 	
 	//approval_path 테이블
@@ -24,7 +25,9 @@ public class ApprovalDataBean {
 	private String user2;		//구분(gubun) ap02:검토자or결재자
 	private String user3;		//구분(gubun) ap03:결재자
 	
-	
+	private String stamp1;
+	private String stamp2;
+	private String stamp3;
 	
 	
 	public int getDocNo() {
@@ -63,11 +66,12 @@ public class ApprovalDataBean {
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	public String getType() {
-		return type;
+
+	public String getTypegubun() {
+		return typegubun;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setTypegubun(String typegubun) {
+		this.typegubun = typegubun;
 	}
 	public String getStartDt() {
 		return startDt;
@@ -129,6 +133,32 @@ public class ApprovalDataBean {
 	public void setUser3(String user3) {
 		this.user3 = user3;
 	}
+	public String getStamp1() {
+		return stamp1;
+	}
+	public void setStamp1(String stamp1) {
+		this.stamp1 = stamp1;
+	}
+	public String getStamp2() {
+		return stamp2;
+	}
+	public void setStamp2(String stamp2) {
+		this.stamp2 = stamp2;
+	}
+	public String getStamp3() {
+		return stamp3;
+	}
+	public void setStamp3(String stamp3) {
+		this.stamp3 = stamp3;
+	}
+	public String getHoliday() {
+		return holiday;
+	}
+	public void setHoliday(String holiday) {
+		this.holiday = holiday;
+	}
+	
+	
 	
 	
 }

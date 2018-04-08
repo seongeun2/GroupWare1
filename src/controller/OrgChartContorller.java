@@ -3,10 +3,14 @@ package controller;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import dao.OrgChartDBMybatis;
 
 @Controller
@@ -31,8 +35,11 @@ public class OrgChartContorller {
 	
 	//총 직원 목록 
 	@RequestMapping("/insa")
-	public String insa(Model model) throws Exception {
-		System.out.println("articleList======");
+	public String insa(Model model, HttpServletRequest request) throws Exception {
+		
+		//문서작성 시 조직도 수신처를 가져오기 위한 페이지
+		String app = request.getParameter("app");
+		
 		int pageSize=5;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
@@ -63,9 +70,14 @@ public class OrgChartContorller {
 		model.addAttribute("bottomLine", bottomLine);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("number", number);
+		model.addAttribute("app", app);
 		
-		
-		return "orgChart/insa";
+	
+		if( app != null ) {
+			return "insa";
+		}else {
+			return "orgChart/insa";
+		}
 	}
 	
 	

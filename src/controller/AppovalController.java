@@ -3,6 +3,7 @@ package controller;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -37,8 +38,8 @@ public class AppovalController {
 	
 	//휴가신청서
 	@RequestMapping("/type2")
-	public String type2(Model model) {
-		String userid = "daramy";
+	public String type2(Model model, HttpSession session) {
+		String userid = (String)session.getAttribute("id");
 		ApprovalDataBean vo = dbPro.apInfo(userid);
 		model.addAttribute("vo", vo);
 		return "approval/type2";
@@ -46,34 +47,47 @@ public class AppovalController {
 
 	//지출품의서
 	@RequestMapping("/type3")
-	public String type3(Model model) {
+	public String type3(Model model, HttpSession session) {
+		String userid = (String)session.getAttribute("id");
+		ApprovalDataBean vo = dbPro.apInfo(userid);	
+		model.addAttribute("vo", vo);
 		return "approval/type3";
 	}
 	
 	
-	/*//문서작성
+	//문서작성
 	@RequestMapping("/apWrite")
-	public String apWrite(Model model, ApprovalDataBean approval) {
-		approval = dbPro.apWrite(approval);
+	public String apWrite(Model model,HttpSession session, ApprovalDataBean approval, HttpServletRequest request) {
+		//세션에서 가져온 값을 userid에 저장
+		String userid = (String)session.getAttribute("id");
+		//2번째 결재자 id,name 
+		String id2 = request.getParameter("id2");
+		String name2 = request.getParameter("name2");
+		//3번째 결재자 id,name
+		String id3 = request.getParameter("id3");
+		String name3 = request.getParameter("name3");
+	
+		
+		approval.setInId(userid);
+		
+		dbPro.apWrite(approval,id2,id3,name2,name3);
 		
 		model.addAttribute("approval", approval);
 		
-		String type = approval.getType();
+		String type = approval.getTypegubun();
 		if(approval.equals("1")) {	//작성 성공시 리스트로 이동
 			return "/approval/list";
 		}
 		return "/approval/type1";
 		
-	}*/
+	}
 
 	
 	//결재현황 리스트
 	@RequestMapping("/allList")
-	public String allList(Model model) {
-		
+	public String allList(Model model, HttpSession session) {
 		//세션에서 가져온 값을 userid에 저장
-		String userid = "daramy";
-		
+		String userid = (String)session.getAttribute("id");
 		int pageSize=5;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
@@ -111,10 +125,10 @@ public class AppovalController {
 	
 	//결재진행 리스트
 	@RequestMapping("/apIng")
-	public String apIng(Model model) {
+	public String apIng(Model model, HttpSession session) {
 		
 		//세션에서 가져온 값을 userid에 저장
-		String userid = "daramy";
+		String userid = (String)session.getAttribute("id");
 		
 		int pageSize=5;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -153,10 +167,10 @@ public class AppovalController {
 	
 	//결재대기 리스트
 	@RequestMapping("/apWaiting")
-	public String apWaiting(Model model) {
+	public String apWaiting(Model model, HttpSession session) {
 		
 		//세션에서 가져온 값을 userid에 저장
-		String userid = "daramy";
+		String userid = (String)session.getAttribute("id");
 		
 		int pageSize=5;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -201,12 +215,12 @@ public class AppovalController {
 		model.addAttribute("vo", vo);
 		model.addAttribute("pageNum", pageNum);
 		
-		String type = vo.getType();
+		String typegubun = vo.getTypegubun();
 		
-		if(type.equals("doc01")){
+		if(typegubun.equals("doc01")){
 			return "approval/type1View";	//기안서 페이지
 			
-		}else if(type.equals("doc02")) {
+		}else if(typegubun.equals("doc02")) {
 			model.addAttribute("vo", vo);
 			
 			return "approval/type2View";	//휴가신청서 페이지		
@@ -215,6 +229,27 @@ public class AppovalController {
 	}
 	
 	
+	
+	//상세보기
+		@RequestMapping("/apSave")
+		public String apSave(Model model, int docNum) {
+			ApprovalDataBean vo = dbPro.viewPage(docNum);
+			
+			model.addAttribute("vo", vo);
+			model.addAttribute("pageNum", pageNum);
+			
+			String typegubun = vo.getTypegubun();
+			
+			if(typegubun.equals("doc01")){
+				return "approval/type1View";	//기안서 페이지
+				
+			}else if(typegubun.equals("doc02")) {
+				model.addAttribute("vo", vo);
+				
+				return "approval/type2View";	//휴가신청서 페이지		
+			}
+				return "approval/type3View";	//지출품의서 페이지
+		}
 	
 	
 }
