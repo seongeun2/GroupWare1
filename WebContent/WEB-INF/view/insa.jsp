@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="${pageContext.servletContext.contextPath}/resources/css/orgTree-view.css">
+<style>
+.th .td {text-align: center;}
+</style>
 <body>
  
  <div class="w3-container" style="margin: 40px 100px;">
@@ -45,7 +48,7 @@
          <td>${li.position}</td><!-- 직위 -->
          <td>${li.tel}</td><!-- 사내번호 -->
          <td>${li.email}</td><!-- 이메일 -->
-         <td><input type="checkbox" onclick="check('${li.name}','${li.id}','${app}')"></td>
+         <td><center><input class="w3-check" type="checkbox" onclick="check('${li.name}','${li.id}','${app}')"></center></td>
        </tr>
    </c:forEach>       
 </table>

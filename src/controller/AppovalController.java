@@ -85,11 +85,13 @@ public class AppovalController {
 	
 	//결재현황 리스트
 	@RequestMapping("/allList")
-	public String allList(Model model, HttpSession session) {
+	public String allList(Model model, HttpSession session, HttpServletRequest request) {
+		//검색처리
+		String keyField = request.getParameter("keyField");
+		String keyWord = request.getParameter("keyWord");
 		//세션에서 가져온 값을 userid에 저장
 		String userid = (String)session.getAttribute("id");
 		int pageSize=5;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
@@ -97,11 +99,9 @@ public class AppovalController {
 		int count = 0;
 		int number = 0;
 		List ap = null;
-		count = dbPro.allListCount(userid);
-		System.out.println(count);
+		count = dbPro.allListCount(userid, keyField, keyWord);
 		if(count > 0){
-			ap = dbPro.allList(startRow, endRow, userid);
-			System.out.println(ap);
+			ap = dbPro.allList(startRow, endRow, userid, keyField, keyWord);
 			}
 				number=count - (currentPage-1)*pageSize;
 		

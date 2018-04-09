@@ -8,3 +8,5 @@ Insert into APPROVAL_PATH (DOCNO,USERID,USERNAME,STATUS,GUBUN) values (2,'zhdzhd
 Insert into APPROVAL_PATH (DOCNO,USERID,USERNAME,STATUS,GUBUN) values (1,'daramy','¶ºÀ¸´Ï','st01','ap01');
 Insert into APPROVAL_PATH (DOCNO,USERID,USERNAME,STATUS,GUBUN) values (1,'zhdzhdgl','ÄáÄáÈ÷','st02','ap02');
 Insert into APPROVAL_PATH (DOCNO,USERID,USERNAME,STATUS,GUBUN) values (1,'ok','»çÀå',null,'ap03');
+
+commit;

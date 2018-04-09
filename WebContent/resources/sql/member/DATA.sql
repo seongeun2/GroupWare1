@@ -8,7 +8,6 @@ Insert into TPTEAM (TNUM,TNAME,DNUM) values (302,'개발2팀',300);
 Insert into TPTEAM (TNUM,TNAME,DNUM) values (401,'디자인1팀',400);
 Insert into TPTEAM (TNUM,TNAME,DNUM) values (402,'디자인2팀',400);
 
-
 --TPUSER 테이블 데이터
 Insert into TPUSER (NAME,PHONE,TEL,EMNUM,TNUM,ID,PW,EMAIL,POSITION,JOIND,LOGIN,SIGNATURE) values ('사용자','010-5124-0316',' 02-2601-1234 ',1,100,'user','1111','xodgl@daum.net',1,'2017.03.16',0,null);
 Insert into TPUSER (NAME,PHONE,TEL,EMNUM,TNUM,ID,PW,EMAIL,POSITION,JOIND,LOGIN,SIGNATURE) values ('관리자','010-5124-0316 ',' 02-2601-1235',2,201,'admin','1234','admin@daum.net',2,'2017.03.17',0,null);
@@ -23,3 +22,5 @@ Insert into TPDEP (DNUM,DNAME) values (100,'대표');
 Insert into TPDEP (DNUM,DNAME) values (200,'경영지원부서');
 Insert into TPDEP (DNUM,DNAME) values (300,'개발부서');
 Insert into TPDEP (DNUM,DNAME) values (400,'디자인부서');
+
+commit;

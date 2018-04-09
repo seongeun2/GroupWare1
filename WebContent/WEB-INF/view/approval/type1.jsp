@@ -49,7 +49,7 @@
          <!-- 2번 결재 -->
       <div class="w3-col" style="width: 15%; height: 120px">
          <div class="w3-container w3-center w3-border">
-            <p id="name22" name="name22" onclick="apPop();" >선택</p>
+            <p id="name22" name="name22" onclick="apPop();" >결재선1</p>
             </div>
             <div class="w3-container w3-center w3-border">
                  <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 
@@ -59,7 +59,7 @@
          <!-- 3번 결재 -->
          <div class="w3-col" style="width: 15%; height: 120px">
             <div class="w3-container w3-center w3-border">
-                 <p id="name33" name="name33" onclick="apPop2();" >선택</p>
+                 <p id="name33" name="name33" onclick="apPop2();" >결재선2</p>
             </div>
             <div class="w3-container w3-center w3-border">
                  <img src="${pageContext.servletContext.contextPath}/resources/images/mypic.gif" 

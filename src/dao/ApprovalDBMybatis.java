@@ -77,26 +77,40 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	}
 	
 	//결재현황 리스트
-	public List allList(int startRow, int endRow, String userid) {
+	public List allList(int startRow, int endRow, String userid, String keyField, String keyWord) {
 		sqlSession = sqlSession();
 		Map map = new HashMap();
+		
+		if(keyWord == "") {
+			keyWord = null;
+		}
+		
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
 		map.put("userid", userid);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
 		
-		List li = sqlSession.selectList(namespace+".allList", map) ;		//오브젝트인가? 컬렉션인가?
+		List li = sqlSession.selectList(namespace+".allList", map) ;	
 		sqlSession.close();
 		return li;
 	}
 	
 	//결재현황 카운트
-	public int allListCount(String userid) {
+	public int allListCount(String userid, String keyField, String keyWord) {
 		int x=0;
 		sqlSession = sqlSession();
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("userid", userid);
+		Map map = new HashMap();
 		
-		x = sqlSession.selectOne(namespace+".allListCount", map) ;		//selectOne (오브젝트) /오브젝트인가? 컬렉션인가?
+		if(keyWord == "") {
+			keyWord = null;
+		}
+		
+		map.put("userid", userid);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
+		
+		x = sqlSession.selectOne(namespace+".allListCount", map) ;	
 		sqlSession.close();
 		return x;
 	}

@@ -61,16 +61,30 @@
 			from approval app, approval_path path
 			where app.docno = path.docno
 			and path.userid = #{userid}) a)
+			where 1=1 
+			<if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
 			<if test = "startRow != null and endRow != null">
-			 where rnum between #{startRow} and #{endRow}
+			 and rnum between #{startRow} and #{endRow}
 			</if>
 	</select>
+	
 	<!-- 결재현황 카운트 -->
 	<select id="allListCount" resultType="int" parameterType="hashmap">
-		select count(*)
+		select nvl(count(*),0) from (select rownum rnum ,a.* from(select app.docno, app.title, app.name, app.deptname, app.teamname, 
+			app.indt, decode(app.typegubun,'doc01','기안서','doc02','휴가신청서','doc03','지출결의서') typegubun, 
+			decode(path.status,'st01','진행중','st02','결재대기','st03','결재완료','st04','반려') status 
 			from approval app, approval_path path
 			where app.docno = path.docno
-			and path.userid = #{userid}
+			and path.userid = #{userid}) a)
+			where 1=1 
+			<if test = "keyWord != null">
+			and ${keyField} like '%' ||#{keyWord}|| '%'
+			</if>
+			<if test = "startRow != null and endRow != null">
+			 and rnum between #{startRow} and #{endRow}
+			</if>
 	</select>
 	
 	<!-- 진행문서 리스트 -->

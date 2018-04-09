@@ -1,15 +1,15 @@
 //2번째 선택 시
 function apPop(){
-	var w = 800;
-	var h = 500;
-	window.open("/GroupWare/orgChart/insa?app=1", "��������",'width='+w+',height='+h+',scrollbars=no,status=1')
+	var w = 1000;
+	var h = 600;
+	window.open("/GroupWare/orgChart/insa?app=1", "경로지정",'width='+w+',height='+h+',scrollbars=no,status=1')
 
 }
 
 //3번째 선택시
 function apPop2(){
-	var w = 800;
-	var h = 500;
+	var w = 1000;
+	var h = 600;
 	window.open("/GroupWare/orgChart/insa?app=2", "경로지정",'width='+w+',height='+h+',scrollbars=no,status=1')
 
 }
