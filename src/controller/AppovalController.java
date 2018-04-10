@@ -1,8 +1,13 @@
 package controller;
 
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -53,10 +58,9 @@ public class AppovalController {
 		return "approval/type3";
 	}
 	
-	
 	//문서작성
 	@RequestMapping("/apWrite")
-	public String apWrite(Model model,HttpSession session, ApprovalDataBean approval, HttpServletRequest request) {
+	public String apWrite(Model model,HttpSession session, ApprovalDataBean approval, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//세션에서 가져온 값을 userid에 저장
 		String userid = (String)session.getAttribute("id");
 		//2번째 결재자 id,name 
@@ -69,16 +73,22 @@ public class AppovalController {
 		
 		approval.setInId(userid);
 		
-		dbPro.apWrite(approval,id2,id3,name2,name3);
+		int cnt = dbPro.apWrite(approval,id2,id3,name2,name3);
 		
 		model.addAttribute("approval", approval);
 		
-		String type = approval.getTypegubun();
-		if(approval.equals("1")) {	//작성 성공시 리스트로 이동
-			return "/approval/alllist";
-		}
-		return "approval/allList";
+		//입력하면 메세지 창
+		String msg = "sucess";
+		 PrintWriter out = response.getWriter();
+		 request.setCharacterEncoding("EUC-KR");
+		 response.setContentType("text/html; charset=EUC-KR");
+		 response.setHeader("Content-Type", "text/html;charset=EUC-KR");
+		 
+		    out.println("<script>alert('"+msg+"'); location.href='/GroupWare/approval/allList';</script>");
+		    out.flush(); 
+		    out.close();
 		
+		return null ;
 	}
 
 	

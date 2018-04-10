@@ -42,19 +42,19 @@ public class ApprovalDBMybatis extends MybatisConnector{
 		//approval 원 테이블 등록
 		sqlSession.insert(namespace+".apInsert",approval);
 		//경로 테이블 1번째 기안자 등록
-		sqlSession.insert(namespace+".apInsert_path",approval);
+		cnt = sqlSession.insert(namespace+".apInsert_path",approval);
 		
 		if(!id2.equals("")) {
 			//2번째 결재자로 id와,이름을 변경 후 등록
 			approval.setUserid(id2);
 			approval.setUser2(user2);
-			sqlSession.insert(namespace+".apInsert_path2",approval);
+			cnt = sqlSession.insert(namespace+".apInsert_path2",approval);
 		}
 		if(!id3.equals("")) {
 			//3번째 결재자로 id와, 이름을 변경 후 등록
 			approval.setUserid(id3);
 			approval.setUser3(user3);
-			sqlSession.insert(namespace+".apInsert_path3",approval);
+			cnt = sqlSession.insert(namespace+".apInsert_path3",approval);
 		}
 		
 		sqlSession.commit();
