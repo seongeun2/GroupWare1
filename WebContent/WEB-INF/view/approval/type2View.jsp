@@ -102,6 +102,13 @@
    </div>
    
    <div class="w3-padding-16"></div>
+   <div class="w3-padding">
+      <label>휴가종류</label>
+        <input class="w3-input w3-border" type="text" value="${vo.holiday}" readonly>
+   </div>
+   
+   
+   <div class="w3-padding-16"></div>
    <div class="w3-row-padding">
       <div class="w3-half">
          <label>휴가시작</label>

@@ -22,7 +22,8 @@
 <!-- 사이 줄 그어줍니다. -->
 <hr class="w3-opacity">
 <div class="w3-padding-32 w3-border" style="margin-left: 120px; margin-right: 120px;">
-<form action="apWrite" target="_blank">
+<!-- <form action="apWrite" target="_blank"> -->
+<form action="apWrite" method="post">
 <input type="hidden" name="typegubun" value="doc01">
 <input type="hidden" id="id2" name="id2" value="${id2}">
 <input type="hidden" id="id3" name="id3" value="${id3}">

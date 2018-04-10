@@ -31,14 +31,17 @@ public class OrgChartDBMybatis extends MybatisConnector{
 		return x;
 	}
 	
-	//목록 가져옴
-	public List getArticles(int startRow, int endRow) {
+	//직원목록 가져옴
+	public List getArticles(int startRow, int endRow, String keyField, String keyWord) {
 		sqlSession = sqlSession();
 		Map map = new HashMap();
+		if(keyWord == "") {
+			keyWord = null;
+		}
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
-		System.out.println("startRow"+startRow);
-		System.out.println("endRow"+endRow);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
 		
 		List li = sqlSession.selectList(namespace+".getArticles", map);	
 		System.out.println("li====="+li);
