@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import model.MemberDataBean;
+
 public class MemberDBMybatis extends MybatisConnector{
 	private final String namespace = "member.mybatis";
 	
@@ -43,7 +45,15 @@ public class MemberDBMybatis extends MybatisConnector{
 		return name;
 	}
 	
-
+	//직원 등록
+	public void insertEmployee(MemberDataBean article) {
+		sqlSession = sqlSession();
+		int number = sqlSession.selectOne(namespace+".getNextNumber",article);
+		
+		sqlSession.insert(namespace+".insertEmployee",article);
+		sqlSession.commit();
+		sqlSession.close();
+	}
 	
 	
 	

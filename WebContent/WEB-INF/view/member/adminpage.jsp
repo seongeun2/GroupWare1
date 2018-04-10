@@ -16,9 +16,9 @@
     </div> 
     <div class="w3-padding-64">
       <a href="${pageContext.request.contextPath}/member/regEmployee" class="w3-button w3-metro-dark-blue w3-block w3-hover-blue-grey w3-padding-16">직원 등록</a>
-      <a href="#work" class="w3-button w3-metro-dark-blue w3-block w3-hover-teal w3-padding-16">총 직원 보기</a>
-      <a href="#work" class="w3-button w3-metro-dark-blue w3-block w3-hover-dark-grey w3-padding-16">공지사항</a>
-      <a href="#contact" class="w3-button w3-metro-dark-blue w3-block w3-hover-brown w3-padding-16">자유게시판</a>
+      <a href="${pageContext.request.contextPath}/orgChart/insa" class="w3-button w3-metro-dark-blue w3-block w3-hover-teal w3-padding-16">총 직원 보기</a>
+      <a href="${pageContext.request.contextPath}/board/list1" class="w3-button w3-metro-dark-blue w3-block w3-hover-dark-grey w3-padding-16">자유게시판</a>
+      <a href="${pageContext.request.contextPath}/board/list2" class="w3-button w3-metro-dark-blue w3-block w3-hover-brown w3-padding-16">공지사항</a>
     </div>
   </div>
 </div>

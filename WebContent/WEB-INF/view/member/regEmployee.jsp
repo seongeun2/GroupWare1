@@ -15,7 +15,7 @@
 	  	<h1>직원 등록</h1>
 	</div>
 	<div class="w3-container w3-half w3-margin-top">	
-		<form class="w3-container w3-card-4" action="" method="post">
+		<form class="w3-container w3-card-4" action="regEmployeePro" method="post" enctype="multipart/form-data">
 			<p>
 				<label>*이름</label>
 				<input class="w3-input" type="text" style="width:90%" name="name" required>
@@ -28,7 +28,7 @@
 			
 			<p>
 				<label>*비밀번호</label>
-				<input class="w3-input" type="text" style="width:90%" name="pw" required>
+				<input class="w3-input" type="password" style="width:90%" name="pw" required>
 			</p>
 			
 			<p>
@@ -102,7 +102,7 @@
 				</div>
 				
 				<div class="image-upload-wrap">
-					<input class="file-upload-input" type="file" name="uploadImage" onchange="readURL(this);" accept="image/*" form="submitForm"/>
+					<input class="file-upload-input" type="file" name="signature" onchange="readURL(this);" accept="image/*" size="40" maxlength="30" form="submitForm"/>
 					<div class="drag-text">
 						<h3>Drag and drop a file<br>or select add Image</h3>
 					</div>

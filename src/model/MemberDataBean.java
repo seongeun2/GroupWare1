@@ -13,6 +13,8 @@ public class MemberDataBean {
 	String position;	//사원 직위
 	String joind;		//사원 입사일
 	int login;			//로그인 상태(Default = 0)
+	String signature;	//서명
+	int filesize;
 	
 	//TPTEAM 테이블
 	String tname;  //팀 이름
@@ -88,6 +90,21 @@ public class MemberDataBean {
 	public void setLogin(int login) {
 		this.login = login;
 	}
+	
+	public String getSignature() {
+		return signature;
+	}
+	public void setSignature(String signature) {
+		this.signature = signature;
+	}
+	
+	public int getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(int filesize) {
+		this.filesize = filesize;
+	}
+	
 	public String getTname() {
 		return tname;
 	}

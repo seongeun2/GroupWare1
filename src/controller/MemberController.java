@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -7,13 +8,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import dao.BoardDBMybatis;
 import dao.MemberDBMybatis;
+import model.MemberDataBean;
 //import member.MemDBMybatis;
 
 @Controller
@@ -56,7 +61,27 @@ public class MemberController{
 		return "member/regEmployee";
 	}
 	
-	
+	//관리자 모드 - 직원 등록 DB에 넣기
+		@RequestMapping("/regEmployeePro")
+		public String regEmployeePro(MultipartHttpServletRequest request, MemberDataBean article, Model model) throws Exception{
+			System.out.println("들어왔나아아아아앙아");
+			ModelAndView mv = new ModelAndView();
+			
+			MultipartFile multi = request.getFile("uploadfile");
+			String filename = multi.getOriginalFilename();
+			
+			if(filename != null && !filename.equals("")) {
+				String uploadPath = request.getRealPath("/")+"fileSave";
+				FileCopyUtils.copy(multi.getInputStream(), new FileOutputStream(uploadPath+"/"+multi.getOriginalFilename()));
+				article.setSignature(filename);
+				article.setFilesize((int) multi.getSize()); 
+				}else {
+					article.setSignature("");
+					article.setFilesize(0); 
+				}	
+				dbPro.insertEmployee(article);
+			return "member/adminpage";
+		}
 	
 }
 
