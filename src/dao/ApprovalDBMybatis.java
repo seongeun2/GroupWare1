@@ -60,6 +60,7 @@ public class ApprovalDBMybatis extends MybatisConnector{
 		sqlSession.commit();
 		sqlSession.close();
 		
+		System.out.println("cnt는==="+cnt);
 		return cnt;
 	}
 	
@@ -116,12 +117,14 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	}
 	
 	//진행문서 리스트
-	public List apIng(int startRow, int endRow, String userid) {
+	public List apIng(int startRow, int endRow, String userid, String keyField, String keyWord) {
 		sqlSession = sqlSession();
 		Map map = new HashMap();
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
 		map.put("userid", userid);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
 		
 		List li = sqlSession.selectList(namespace+".apIng", map) ;		//오브젝트인가? 컬렉션인가?
 		sqlSession.close();
@@ -129,11 +132,13 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	}
 	
 	//진행문서 카운트
-	public int apIngCount(String userid) {
+	public int apIngCount(String userid, String keyField, String keyWord) {
 		int x=0;
 		sqlSession = sqlSession();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
 		
 		x = sqlSession.selectOne(namespace+".apIngCount", map) ;		//selectOne (오브젝트) /오브젝트인가? 컬렉션인가?
 		sqlSession.close();
@@ -141,12 +146,14 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	}
 	
 	//결재대기 리스트
-	public List apWaiting(int startRow, int endRow, String userid) {
+	public List apWaiting(int startRow, int endRow, String userid, String keyField, String keyWord) {
 		sqlSession = sqlSession();
 		Map map = new HashMap();
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
 		map.put("userid", userid);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
 		
 		List li = sqlSession.selectList(namespace+".apWaiting", map) ;		//오브젝트인가? 컬렉션인가?
 		sqlSession.close();
@@ -154,11 +161,13 @@ public class ApprovalDBMybatis extends MybatisConnector{
 	}
 
 	//결재대기 카운트
-	public int apWaitingCount(String userid) {
+	public int apWaitingCount(String userid, String keyField, String keyWord) {
 		int x=0;
 		sqlSession = sqlSession();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("userid", userid);
+		map.put("keyField", keyField);
+		map.put("keyWord", keyWord);
 		
 		x = sqlSession.selectOne(namespace+".apWaitingCount", map) ;		//selectOne (오브젝트) /오브젝트인가? 컬렉션인가?
 		sqlSession.close();

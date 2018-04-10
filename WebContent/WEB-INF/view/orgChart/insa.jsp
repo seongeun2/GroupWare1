@@ -68,7 +68,12 @@ function ApplyForAdmin() {
    document.getElementById("emp_info_tel").readOnly = false;
    document.getElementById("emp_info_email").readOnly = false;
 }
-
+function mem_search(frm){
+	//회원검색기능
+	var frm = document.mem_search;
+	
+	frm.submit();
+}
 </script>
 
 <!-- session 정보 전용입니다. -->
@@ -139,15 +144,15 @@ GenerateID()
 </div><br>
 
 <!-- 회원 검색 -->
-<form name ="search" method="post" style="text-align: center;">
+<form name ="mem_search" method="post" style="text-align: center;">
    <select name="keyField" style="height: 30px;">
-      <option>선택</option>
-      <option value="">부서</option>
-      <option value="m_id">팀</option>
-      <option value="m_name">이름</option>
+      <option value="">선택</option>
+      <option value="dname">부서</option>
+      <option value="tname">팀</option>
+      <option value="name">이름</option>
    </select>
    <input type="text" size="20" name="keyWord">
-   <input type="button" value="검색" onclick="mem_search(form)" />&nbsp;
+   <input type="submit" value="검색" onclick="mem_search(form)" />&nbsp;
 </form>
  
 
@@ -169,7 +174,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-star"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_emnum" class="w3-input w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_emnum" class="w3-input w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -179,7 +184,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-user"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_name" class="w3-input w3-border-bottom w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_name" class="w3-input w3-border-bottom w3-border-blue w3-pale-red" name="first" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -189,7 +194,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-bookmark"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_dnum" class="w3-input w3-border-bottom w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_dnum" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -199,7 +204,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-group"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_tnum" class="w3-input w3-border-bottom w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_tnum" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -209,7 +214,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-id-badge"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_position" class="w3-input w3-border-bottom w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_position" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -219,7 +224,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-phone"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_tel" class="w3-input w3-border-bottom w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_tel" class="w3-input w3-border-bottom w3-border-blue w3-pale-red" name="first" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -240,7 +245,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-star"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_email" class="w3-input w3-border-bottom w3-border-blue w3-pale-blue" name="first" type="text" readonly="readonly">
+            <input id="emp_info_email" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
          </div>
       </div>
    
@@ -254,7 +259,8 @@ GenerateID()
       </div> -->
    
    </div>
-   
+   <br>
+   <c:if test="${id eq 'admin'}">
    <div class="w3-center">
       <div class="w3-bar">
       <!-- 관리자인 경우에는 수정과 삭제가 가능합니다. -->
@@ -267,6 +273,7 @@ GenerateID()
          <button id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible"> 삭제 </button>
       </div>
    </div>
+   </c:if>
 </div>
 
       </div>

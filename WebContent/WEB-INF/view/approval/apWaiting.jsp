@@ -7,7 +7,14 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<script>
+function search3(frm){
+	//회원검색기능
+	var frm = document.search3;
+	
+	frm.submit();
+}
+</script>
 <div class="w3-container" style="margin: 40px 100px;">
 <h2 style="text-align: center;">결재 대기  ${count}건</h2>
 <table class="w3-table-all w3-hoverable" style="text-align: center;">
@@ -76,15 +83,16 @@
 </c:if>
 </div><br>
 
-<!-- 회원 검색 -->
-<form name ="search" method="post" style="text-align: center;">
+<!-- 문서 검색 -->
+<form name ="search3" method="post" style="text-align: center;">
 	<select name="keyField" style="height: 30px;">
-		<option>선택</option>
-		<option value="m_id">이름</option>
-		<option value="m_name">이메일</option>
+		<option value="">선택</option>
+		<option value="title">제목</option>
+		<option value="name">이름</option>
+		<option value="typegubun">문서양식</option>
 	</select>
 	<input type="text" size="20" name="keyWord">
-	<input type="button" value="검색" onclick="mem_search(form)" />&nbsp;
+	<input type="button" value="검색" onclick="search3(form)" />&nbsp;
 </form>
 
 </html>

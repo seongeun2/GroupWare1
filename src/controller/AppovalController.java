@@ -1,6 +1,5 @@
 package controller;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +25,7 @@ public class AppovalController {
 			this.pageNum = pageNum;}
 	}
 	
-	//기안서, 문서작성
+	//기안서
 	@RequestMapping("/type1")
 	public String type1(Model model, HttpSession session) {
 		String userid = (String)session.getAttribute("id");
@@ -76,7 +75,7 @@ public class AppovalController {
 		
 		String type = approval.getTypegubun();
 		if(approval.equals("1")) {	//작성 성공시 리스트로 이동
-			return "/approval/list";
+			return "/approval/alllist";
 		}
 		return "approval/allList";
 		
@@ -89,10 +88,12 @@ public class AppovalController {
 		//검색처리
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
+		
 		//세션에서 가져온 값을 userid에 저장
 		String userid = (String)session.getAttribute("id");
-		int pageSize=5;
 		
+		//페이지처리
+		int pageSize=10;
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage* pageSize;
@@ -100,12 +101,13 @@ public class AppovalController {
 		int number = 0;
 		List ap = null;
 		count = dbPro.allListCount(userid, keyField, keyWord);
+		System.out.println("문서개수"+count);
 		if(count > 0){
-			ap = dbPro.allList(startRow, endRow, userid, keyField, keyWord);
-			}
-				number=count - (currentPage-1)*pageSize;
+			ap = dbPro.allList(startRow, endRow, userid, keyField, keyWord); }
+		System.out.println("문서리스트"+ap);
+		number = count - (currentPage-1) * pageSize;
 		
-		int bottomLine=3;
+		int bottomLine=5;
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		int startPage = 1+(currentPage-1)/bottomLine*bottomLine;
 		int endPage = startPage+bottomLine-1;
@@ -125,29 +127,29 @@ public class AppovalController {
 	
 	//결재진행 리스트
 	@RequestMapping("/apIng")
-	public String apIng(Model model, HttpSession session) {
-		
+	public String apIng(Model model, HttpSession session, HttpServletRequest request) {
+		//검색처리
+		String keyField = request.getParameter("keyField");
+		String keyWord = request.getParameter("keyWord");
 		//세션에서 가져온 값을 userid에 저장
 		String userid = (String)session.getAttribute("id");
-		
-		int pageSize=5;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		
+		//페이지처리
+		int pageSize=10;
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage* pageSize;
 		int count = 0;
 		int number = 0;
 		List ap = null;
-		count = dbPro.apIngCount(userid);
-		System.out.println(count);
+		count = dbPro.apIngCount(userid, keyField, keyWord);
+		System.out.println("문서개수"+count);
 		if(count > 0){
-			ap = dbPro.apIng(startRow, endRow, userid);
+			ap = dbPro.apIng(startRow, endRow, userid, keyField, keyWord);
 			System.out.println(ap);
 			}
 				number=count - (currentPage-1)*pageSize;
 		
-		int bottomLine=3;
+		int bottomLine=5;
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		int startPage = 1+(currentPage-1)/bottomLine*bottomLine;
 		int endPage = startPage+bottomLine-1;
@@ -167,29 +169,29 @@ public class AppovalController {
 	
 	//결재대기 리스트
 	@RequestMapping("/apWaiting")
-	public String apWaiting(Model model, HttpSession session) {
-		
+	public String apWaiting(Model model, HttpSession session, HttpServletRequest request) {
+		//검색처리
+		String keyField = request.getParameter("keyField");
+		String keyWord = request.getParameter("keyWord");		
 		//세션에서 가져온 값을 userid에 저장
 		String userid = (String)session.getAttribute("id");
-		
-		int pageSize=5;
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		
+		//페이지처리
+		int pageSize=10;
 		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage-1)*pageSize+1;
 		int endRow = currentPage* pageSize;
 		int count = 0;
 		int number = 0;
 		List ap = null;
-		count = dbPro.apWaitingCount(userid);
+		count = dbPro.apWaitingCount(userid, keyField, keyWord);
 		System.out.println(count);
 		if(count > 0){
-			ap = dbPro.apWaiting(startRow, endRow, userid);
+			ap = dbPro.apWaiting(startRow, endRow, userid, keyField, keyWord);
 			System.out.println(ap);
 			}
 				number=count - (currentPage-1)*pageSize;
 		
-		int bottomLine=3;
+		int bottomLine=5;
 		int pageCount=count/pageSize+(count%pageSize==0?0:1);
 		int startPage = 1+(currentPage-1)/bottomLine*bottomLine;
 		int endPage = startPage+bottomLine-1;
@@ -218,17 +220,17 @@ public class AppovalController {
 		model.addAttribute("pageNum", pageNum);
 		
 		String typegubun = vo.getTypegubun();
-		System.out.println(typegubun);
+		System.out.println(typegubun+"타입");
 		
 		if(typegubun.equals("doc01")){
-			System.out.println("1111111111111111");
+			System.out.println("1기안서페이지");
 			return "approval/type1View";	//기안서 페이지
 			
 		}else if(typegubun.equals("doc02")) {
-			System.out.println("222222222222222");
+			System.out.println("2휴가신청서페이지");
 			return "approval/type2View";	//휴가신청서 페이지		
 		}
-		System.out.println("333333333333");
+		System.out.println("3지출결의서페이지");
 			return "approval/type3View";	//지출품의서 페이지
 	}
 	

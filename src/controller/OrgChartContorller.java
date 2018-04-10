@@ -36,7 +36,9 @@ public class OrgChartContorller {
 	//총 직원 목록 
 	@RequestMapping("/insa")
 	public String insa(Model model, HttpServletRequest request) throws Exception {
-		
+		//검색처리
+		String keyField = request.getParameter("keyField");
+		String keyWord = request.getParameter("keyWord");
 		//문서작성 시 조직도 수신처를 가져오기 위한 페이지
 		String app = request.getParameter("app");
 		
@@ -52,7 +54,7 @@ public class OrgChartContorller {
 		count = dbPro.getArticleCount();
 		
 		if(count > 0){
-			articleList = dbPro.getArticles(startRow, endRow);}
+			articleList = dbPro.getArticles(startRow, endRow, keyField, keyWord);}
 		System.out.println("articleList======"+articleList);
 				number=count - (currentPage-1)*pageSize;
 		

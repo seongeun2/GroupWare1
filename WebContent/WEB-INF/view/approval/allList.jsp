@@ -8,9 +8,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
-function search(frm){
+function search1(frm){
 	//회원검색기능
-	var frm = document.search;
+	var frm = document.search1;
 	
 	frm.submit();
 }
@@ -83,17 +83,17 @@ function search(frm){
 </c:if>
 </div><br>
 
-<!-- 회원 검색 -->
-<form name ="search" method="post" style="text-align: center;">
+<!-- 문서 검색 -->
+<form name ="search1" method="post" style="text-align: center;">
 	<select name="keyField" style="height: 30px;">
 		<option value="">선택</option>
 		<option value="status">진행상태</option>
+		<option value="title">제목</option>
 		<option value="name">이름</option>
-		<option value="deptName">부서</option>
-		<option value="teamName">팀명</option>
+		<option value="typegubun">문서양식</option>
 	</select>
 	<input type="text" size="20" name="keyWord">
-	<input type="button" value="검색" onclick="search(form)" />&nbsp;
+	<input type="submit" value="검색" onclick="search1(form)" />&nbsp;
 </form>
 
 </html>
