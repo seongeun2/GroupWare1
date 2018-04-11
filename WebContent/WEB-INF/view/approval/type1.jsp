@@ -5,15 +5,15 @@
   <script src="${pageContext.servletContext.contextPath}/resources/js/app.js"></script>
   <!-- Contact Section -->
 <div class="w3-row-padding w3-center w3-padding-24" style="margin-left: 110px; margin-right: 110px;">
-   <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
+   <div class="w3-third w3-metro-dark-blue w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type1'">
       <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
       <p>기안서</p>
    </div>
-   <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type2'">
+   <div class="w3-third w3-metro-dark-blue w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type2'">
       <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
       <p>휴가신청서</p>
    </div>
-   <div class="w3-third w3-dark-grey w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type3'">
+   <div class="w3-third w3-metro-dark-blue w3-button w3-hover-teal" onclick="location.href='/GroupWare/approval/type3'">
       <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
       <p>지출결의서</p>
    </div>
@@ -32,7 +32,7 @@
    <div style="margin-left:300px; margin-right:300px;">
    
    
-      <div class="w3-row w3-padding w3-blue-grey">
+      <div class="w3-row w3-padding w3-grey">
          <div class="w3-padding-16"></div>
          
          <div class="w3-col" style="width: 55%;"><p class="w3-xxxlarge">기 안 서</p></div>

@@ -91,7 +91,6 @@ function pop(){	//쪽지쓰기_조직도 팝업
       <div class="grid-menu w3-display-container" style="display: none;">
          <div class="w3-row">
             <div class="w3-half grid-menu-item w3-display-topleft w3-metro-dark-blue" onclick="location.href='/GroupWare/approval/type1'">
-               <!-- 문서작성 -->
                <div class="w3-display-middle">
                   <i class="fa fa-file-text-o" style="font-size:36px;"></i>
                </div>
@@ -100,8 +99,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                </div>
             </div>
             
-            <div class="w3-half grid-menu-item w3-display-topright w3-metro-dark-blue" onclick="location.href='/GroupWare/approval/allList'">
-               <!-- 대기문서 -->
+            <div class="w3-half grid-menu-item w3-display-topright w3-metro-yellow" onclick="location.href='/GroupWare/approval/allList'">
                <div class="w3-display-middle">
                   <i class="fa fa-hand-stop-o" style="font-size:36px;"></i>
                </div>
@@ -112,8 +110,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
          </div>
          
          <div class="w3-row">
-            <div class="w3-half grid-menu-item w3-display-bottomleft w3-metro-dark-blue" onclick="location.href='/GroupWare/approval/apIng'">
-               <!-- 반려문서 -->
+            <div class="w3-half grid-menu-item w3-display-bottomleft w3-metro-teal" onclick="location.href='/GroupWare/approval/apIng'">
                <div class="w3-display-middle">
                   <i class="fa fa-undo" style="font-size:36px;"></i>
                </div>
@@ -122,8 +119,7 @@ function pop(){	//쪽지쓰기_조직도 팝업
                </div>
             </div>
             
-            <div class="w3-half grid-menu-item w3-display-bottomright w3-metro-dark-blue" onclick="location.href='/GroupWare/approval/apWaiting'">
-               <!-- 결재완료 -->
+            <div class="w3-half grid-menu-item w3-display-bottomright w3-metro-red" onclick="location.href='/GroupWare/approval/apWaiting'">
                <div class="w3-display-middle">
                   <i class="fa fa-check-square-o" style="font-size:36px;"></i>
                </div>
