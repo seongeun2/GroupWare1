@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import dao.BoardDBMybatis;
 import dao.MemberDBMybatis;
 import model.MemberDataBean;
@@ -57,7 +58,7 @@ public class MemberController{
 	//관리자 모드 - 직원 등록
 	@RequestMapping("/regEmployee")
 	public String regEmployee() {
-		
+		System.out.println("regEmployee");
 		return "member/regEmployee";
 	}
 	
@@ -81,7 +82,7 @@ public class MemberController{
 				}	
 				dbPro.insertEmployee(article);
 			return "member/adminpage";
-		}
+		}	
 	
 }
 

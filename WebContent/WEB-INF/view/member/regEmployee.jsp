@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="/GroupWare/resources/css/admin.css" />
-		<!-- <link rel="stylesheet" href="/GroupWare/resources/js/admin.js" /> -->
 		<script src="${pageContext.servletContext.contextPath}/resources/js/admin.js"></script>
 	</head>
 <body>
@@ -15,7 +14,7 @@
 	  	<h1>직원 등록</h1>
 	</div>
 	<div class="w3-container w3-half w3-margin-top">	
-		<form class="w3-container w3-card-4" action="regEmployeePro" method="post" enctype="multipart/form-data">
+		<form class="w3-container w3-card-4" action="regEmployeePro" enctype="multipart/form-data" method="post">
 			<p>
 				<label>*이름</label>
 				<input class="w3-input" type="text" style="width:90%" name="name" required>
@@ -95,7 +94,7 @@
 			
 			<!-- input file Image upload -->
 			
-			<label>*도장등록</label>
+	<!-- 		<label>*도장등록</label>
 			<div class="inner inputbox file-upload">
 				<div style="text-align: center">
 					<a href="#" class="button special fit" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</a>
@@ -116,10 +115,20 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
+			
+			
+			 <tr>
+  				<td width="70" align="center">file</td>
+  				<td width="330">
+  				<input type="file" size="40" maxlength="30" name="uploadfile"> 
+  				</td>
+		    </tr>
 			
 			<p>
-				<button class="w3-button w3-section w3-teal w3-ripple">입력 </button>
+				<!-- <button type="submit" class="w3-button w3-section w3-teal w3-ripple">입력 </button> -->
+				<button type="submit" class="w3-button w3-black w3-margin-bottom w3-hover-teal">
+      <i class="fa fa-paper-plane w3-margin-right"></i>입력</button>
 			</p>
 			
 		</form>
