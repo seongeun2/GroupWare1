@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import dao.OrgChartDBMybatis;
+import model.MemberDataBean;
 
 @Controller
 @RequestMapping("/orgChart")
@@ -82,5 +83,17 @@ public class OrgChartContorller {
 		}
 	}
 	
+	//관리자 모드 - 직원 수정
+	@RequestMapping("/upEmployee")
+	public String upEmployee(MemberDataBean article, Model model)
+			throws Exception {
+		System.out.println("들어옴!!!!!");
+		System.out.println("article==================="+article);
+	 	int chk= dbPro.upEmployee(article); 
+	 	model.addAttribute("chk", chk);
+	 
+		return "orgChart/updatePro";
+
+	}
 	
 }

@@ -174,7 +174,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-star"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_emnum" class="w3-input w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
+            <input id="emp_info_emnum" class="w3-input w3-border-blue w3-transparent" name="emnum" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -184,7 +184,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-user"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_name" class="w3-input w3-border-bottom w3-border-blue w3-pale-red" name="first" type="text" readonly="readonly">
+            <input id="emp_info_name" class="w3-input w3-border-bottom w3-border-blue w3-pale-red" name="name" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -204,7 +204,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-group"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_tnum" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
+            <input id="emp_info_tnum" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="tnum" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -214,7 +214,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-id-badge"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_position" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
+            <input id="emp_info_position" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="position" type="text" readonly="readonly">
          </div>
       </div>
       
@@ -245,7 +245,7 @@ GenerateID()
             <i class="w3-xxlarge fa fa-star"></i>
          </div>
          <div class="w3-rest">
-            <input id="emp_info_email" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="first" type="text" readonly="readonly">
+            <input id="emp_info_email" class="w3-input w3-border-bottom w3-border-blue w3-transparent" name="email" type="text" readonly="readonly">
          </div>
       </div>
    
@@ -267,7 +267,7 @@ GenerateID()
          <button class="w3-button w3-section w3-blue" onclick="document.getElementById('modal_emp_info').style.display='none'"> 확인 </button>
          
          <!-- 사용자 정보 수정 -->
-         <button id="modifyForAdmin" class="w3-button w3-section w3-pink" style="visibility:visible"> 수정 </button>
+         <button id="modifyForAdmin" class="w3-button w3-section w3-pink" style="visibility:visible" onclick="location.href='upEmployee'"> 수정 </button>
          
          <!-- 사용자 정보 삭제 -->
          <button id="deleteForAdmin" class="w3-button w3-section w3-red" style="visibility:visible"> 삭제 </button>

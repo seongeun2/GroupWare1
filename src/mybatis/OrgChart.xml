@@ -48,5 +48,14 @@
 		select TPUSER.nextval from dual
 	</select>
 	
-	
+	 <!-- 게시글 수정 -->
+   <update id="upEmployee"  parameterType="Member">
+      update tpuser set name=#{name},phone=#{phone},tel=#{tel},emnum=#{emnum},tnum=#{tnum},id=#{id},pw=#{pw},email=#{email},#{position},joind=#{joind},login=#{login},signature=#{signature} 
+		 where emnum=#{emnum} and pw = #{pw}
+   </update>	
+
+    <!-- 게시글 삭제 -->
+    <update id="deleteArticle"  parameterType="map">
+      delete from board where num=#{num} and passwd = #{passwd}
+   </update>
 </mapper>
